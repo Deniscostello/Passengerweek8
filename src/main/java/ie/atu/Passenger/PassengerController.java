@@ -11,19 +11,21 @@ import java.util.List;
 @RequestMapping(path="api/passenger")
 public class PassengerController {
 
+    PassengerService myService;
+
+    public PassengerController(PassengerService myService) {
+        this.myService = myService;
+    }
+
+
     @GetMapping
     public List<Passenger> getPassengers(){
-        List<Passenger> myPassengers = List.of(
-                new Passenger("Mr", "Denis", "1234567890","087654321", 22),
-                new Passenger("Mr", "Denis1", "0987654321","087123456", 27),
-                new Passenger("Mr", "Denis2", "12342345678","087098765", 23));
-        return myPassengers;
+        return myService.getPassengers();
     }
 
     @GetMapping("/{passengerID}")
     public Passenger getPassenger(@PathVariable String passengerID)
     {
-        Passenger myPassenger = new Passenger("Mr", "Denis", "1234567890","087654321", 22);
-        return myPassenger;
+        return myService.getPassenger(passengerID);
     }
 }
