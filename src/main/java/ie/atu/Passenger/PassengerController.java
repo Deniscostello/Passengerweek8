@@ -1,9 +1,6 @@
 package ie.atu.Passenger;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,5 +24,13 @@ public class PassengerController {
     public Passenger getPassenger(@PathVariable String passengerID)
     {
         return myService.getPassenger(passengerID);
+    }
+
+    //Save operation
+    @PostMapping("")
+    public void savePassenger(
+            @RequestBody Passenger passenger)
+    {
+        myService.savePassenger(passenger);
     }
 }

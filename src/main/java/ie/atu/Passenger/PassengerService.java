@@ -22,4 +22,12 @@ public class PassengerService {
         Passenger myPassenger = new Passenger("Mr", "Denis", "1234567890","087654321", 22);
         return myPassenger;
     }
+    public void savePassenger(Passenger passenger)
+    {
+        passengerRepo.save(passenger);
+    }
+    public Passenger findPassengerByName(String name)
+    {
+        return passengerRepo.findPassengerByName(name);
+    }
 }
